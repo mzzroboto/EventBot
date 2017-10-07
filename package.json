@@ -4,7 +4,9 @@
   "description": "EventBot is a local web app to hosts your pictures.",
   "main": "eventbot.js",
   "dependencies": {
-    "express": "^4.16.1"
+    "body-parser": "^1.15.2",
+    "express": "^4.16.1",
+    "multer": "^1.2.0"
   },
   "devDependencies": {},
   "scripts": {
