@@ -6,7 +6,7 @@ app.use(bodyParser.json());
 
 var Storage = multer.diskStorage({
     destination: function(req, file, callback) {
-        callback(null, "./Images");
+        callback(null, "./images");
     },
     filename: function(req, file, callback) {
         callback(null, file.fieldname + "_" + Date.now() + "_" + file.originalname);
@@ -21,7 +21,7 @@ var upload = multer({
 app.get("/", function(req, res) {
     res.sendFile(__dirname + "/index.html");
 });
-app.post("/api/Upload", function(req, res) {
+app.post("/api/upload", function(req, res) {
     upload(req, res, function(err) {
         if (err) {
             return res.end("Something went wrong!");
