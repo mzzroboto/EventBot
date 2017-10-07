@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "EventBot is a local web app to hosts your pictures.",
   "main": "eventbot.js",
-  "dependencies": {},
+  "dependencies": {
+    "express": "^4.16.1"
+  },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
