@@ -3,6 +3,7 @@ var Express = require('express');
  var bodyParser = require('body-parser');
  var app = Express();
  app.use(bodyParser.json());
+ app.use(express.static("public"));
 
  var Storage = multer.diskStorage({
      destination: function(req, file, callback) {
@@ -31,7 +32,7 @@ var Express = require('express');
      });
  });
 
-  app.listen(2000, function(a) {
-     console.log("Listening to port 2000");
+  app.listen(80, function(a) {
+     console.log("Listening to port 80");
  });
   
