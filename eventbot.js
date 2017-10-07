@@ -17,7 +17,6 @@ var upload = multer({
     storage: Storage
 }).array("imgUploader", 3); //Field name and max count
 
-array(fieldname[, maxCount]);
 
 app.get("/", function(req, res) {
     res.sendFile(__dirname + "/index.html");
@@ -31,7 +30,7 @@ app.post("/api/Upload", function(req, res) {
     });
 });
 
- app.listen(2000, function(a) {
-    console.log("Listening to port 2000");
+ app.listen(8090, function(a) {
+    console.log("Listening to port 8090");
 });
  
