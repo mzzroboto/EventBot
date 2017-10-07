@@ -17,7 +17,7 @@ var upload = multer({
     storage: Storage
 }).array("imgUploader", 3); //Field name and max count
 
-array(fieldname[, maxCount])
+array(fieldname[, maxCount]);
 
 app.get("/", function(req, res) {
     res.sendFile(__dirname + "/index.html");
