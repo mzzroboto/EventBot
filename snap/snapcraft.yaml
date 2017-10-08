@@ -9,8 +9,14 @@ description: |
 grade: devel
 confinement: devmode
 
+apps:
+  eventbot:
+    command: eventbot
+
 parts:
-  webserver:
-    source: https://github.com/mzzroboto/EventBot.git
+  eventbot:
+# TODO how to replace with upstream path
+#    source: https://github.com/mzzroboto/EventBot.git
+    source: .
     source-branch: snap-package
     plugin: nodejs

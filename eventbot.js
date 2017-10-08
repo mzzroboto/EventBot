@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var express = require('express');
 var multer = require('multer');
 var bodyParser = require('body-parser');

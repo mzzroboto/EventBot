@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "EventBot is a local web app to hosts your pictures.",
   "main": "eventbot.js",
+  "bin": {
+    "eventbot": "eventbot.js"
+  },
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.16.1",
