@@ -1,8 +1,9 @@
-var Express = require('express');
+var express = require('express');
 var multer = require('multer');
 var bodyParser = require('body-parser');
-var app = Express();
+var app = express();
 app.use(bodyParser.json());
+app.use(express.static("public"));
 
 var Storage = multer.diskStorage({
     destination: function(req, file, callback) {
