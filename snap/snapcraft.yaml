@@ -10,11 +10,14 @@ grade: devel
 confinement: devmode
 
 apps:
-  eventbot:
-    command: eventbot
+  node-service:
+    command: bin/eventbot
+    daemon: simple
+    restart-condition: always
+    plugs: [network-bind]
 
 parts:
-  eventbot:
+  webserver:
 # TODO how to replace with upstream path
 #    source: https://github.com/mzzroboto/EventBot.git
     source: .
