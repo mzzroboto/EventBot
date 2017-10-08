@@ -11,5 +11,6 @@ confinement: devmode
 
 parts:
   webserver:
-    source: .
+    source: https://github.com/mzzroboto/EventBot.git
+    source-branch: snap-package
     plugin: nodejs
