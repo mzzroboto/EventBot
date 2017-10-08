@@ -20,7 +20,10 @@ var upload = multer({
 
 
 app.get("/", function(req, res) {
-    res.sendFile(__dirname + "/index.html");
+    //res.sendFile(__dirname + "/index.html");
+    var friends = ["Rachel","Lucas"];    
+    res.render("index.ejs", {friends: friends});
+
 });
 app.post("/api/upload", function(req, res) {
     upload(req, res, function(err) {
