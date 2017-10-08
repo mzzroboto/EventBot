@@ -11,5 +11,5 @@ confinement: devmode
 
 parts:
   webserver:
-    soource: .
+    source: .
     plugin: nodejs
