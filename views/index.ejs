@@ -7,6 +7,14 @@
     <script src="Scripts/jquery-3.1.1.min.js"></script>
     <script src="Scripts/jquery.form.min.js"></script>
     <script>
+    document.getElementByClassName("img-thumbnail").onchange = function (e) {
+        loadImage(
+            e.target.files[0],
+            function (img) {
+                document.body.appendChild(img);
+            }
+        );
+    };
         $(document).ready(function () {
             var options = {
                 beforeSubmit: showRequest,  // pre-submit callback
@@ -62,7 +70,7 @@
 <div class="containergallery">
 <div class="row">
 	<%pictures.forEach(function(picture){ %>
-    <div class="col-xs-12 col-lg-4"><img src="<%= picture %>" class="img-thumbnail"></div>
+    <div class="col-xs-12 col-lg-4"><img src="<%= picture %>" id="imggallery" class="img-thumbnail"></div>
 <%}); %>
 
     <!--<div class="col-xs-12 col-lg-4"><img src="http://c1.staticflickr.com/9/8450/8026519634_f33f3724ea_b.jpg" class="img-thumbnail"></div>-->

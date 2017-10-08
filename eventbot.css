@@ -31,6 +31,9 @@ img{
 .containergallery {
 	margin: .5%;
 	padding: 1%;
-	
+}
 
+#imggallery {
+	margin-bottom: 5px;
+	max-height: 401px;
 }
