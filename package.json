@@ -5,6 +5,7 @@
   "main": "eventbot.js",
   "dependencies": {
     "body-parser": "^1.15.2",
+    "ejs": "^2.5.7",
     "express": "^4.16.1",
     "multer": "^1.2.0"
   },
