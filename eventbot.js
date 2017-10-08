@@ -7,7 +7,7 @@ app.use(express.static("public"));
 
 var Storage = multer.diskStorage({
     destination: function(req, file, callback) {
-        callback(null, "./images");
+        callback(null, "public/images");
     },
     filename: function(req, file, callback) {
         callback(null, file.fieldname + "_" + Date.now() + "_" + file.originalname);
@@ -21,8 +21,8 @@ var upload = multer({
 
 app.get("/", function(req, res) {
     //res.sendFile(__dirname + "/index.html");
-    var friends = ["Rachel","Lucas"];    
-    res.render("index.ejs", {friends: friends});
+    var pictures = ["/images/IMG_6870.JPG","/images/IMG_6872.JPG","/images/IMG_6881.JPG"];    
+    res.render("index.ejs", {pictures: pictures});
 
 });
 app.post("/api/upload", function(req, res) {
