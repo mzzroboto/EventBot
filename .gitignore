@@ -51,3 +51,11 @@ jspm_packages
 
 # uploaded images
 images/*
+
+# snap files
+*.snap
+parts/
+prime/
+snap/.snapcraft/
+stage/
+
