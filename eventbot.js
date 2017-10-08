@@ -2,6 +2,7 @@ var express = require('express');
 var multer = require('multer');
 var bodyParser = require('body-parser');
 var app = express();
+var fs = require('file-system');
 app.use(bodyParser.json());
 app.use(express.static("public"));
 
@@ -21,7 +22,11 @@ var upload = multer({
 
 app.get("/", function(req, res) {
     //res.sendFile(__dirname + "/index.html");
-    var pictures = ["/images/IMG_6870.JPG","/images/IMG_6872.JPG","/images/IMG_6881.JPG"];    
+    var pictures = [];  
+    fs.recurseSync("public/images/",['**/*.JPG', '**/*.PNG', '**/*.JPEG'], function(filepath, relative, filename){
+    console.log(filename);
+    pictures.push("/images/" + filename);
+}); 
     res.render("index.ejs", {pictures: pictures});
 
 });
