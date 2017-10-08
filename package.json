@@ -1,0 +1,26 @@
+{
+  "name": "eventbot",
+  "version": "1.0.0",
+  "description": "EventBot is a local web app to hosts your pictures.",
+  "main": "eventbot.js",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.16.1",
+    "multer": "^1.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mzzroboto/EventBot.git"
+  },
+  "author": "Lucas Magasweran <lucasrangit@gmail.com>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/mzzroboto/EventBot/issues"
+  },
+  "homepage": "https://github.com/mzzroboto/EventBot#readme"
+}
