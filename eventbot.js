@@ -35,7 +35,7 @@ app.post("/api/upload", function(req, res) {
         if (err) {
             return res.end("Something went wrong!");
         }
-        return res.end("File uploaded sucessfully!.");
+        else return res.redirect("/");
     });
 });
 
