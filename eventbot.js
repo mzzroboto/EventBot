@@ -40,7 +40,7 @@ app.post("/api/upload", function(req, res) {
         }
         else {
         return res.end("File Uploaded Successfully!");
-        res.redirect("/");
+        //res.redirect('/');
         }
     });
 });
