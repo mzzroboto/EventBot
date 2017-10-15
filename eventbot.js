@@ -18,7 +18,7 @@ var Storage = multer.diskStorage({
 
 var upload = multer({
     storage: Storage
-}).array("imgUploader", 3); //Field name and max count
+}).array("imgUploader", 10); //Field name and max count
 
 
 app.get("/", function(req, res) {
@@ -36,7 +36,10 @@ app.post("/api/upload", function(req, res) {
         if (err) {
             return res.end("Something went wrong!");
         }
-        else return res.redirect("/");
+        else {
+        return res.end("File Uploaded Successfully!");
+        res.redirect("/");
+        }
     });
 });
 

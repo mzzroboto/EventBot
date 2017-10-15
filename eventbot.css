@@ -34,7 +34,7 @@ img{
 	pad ding: 1%;
 }
 
-#imggallery {
+.img-thumbnail {
 	margin-bottom: 5px;
 	max-height: 401px;
 }

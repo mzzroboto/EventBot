@@ -4,18 +4,11 @@
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="eventbot.css">
 	<link href="https://fonts.googleapis.com/css?family=Amatic+SC:700|Saira+Semi+Condensed" rel="stylesheet">
-     <script src="scripts/jquery-3.1.1.min.js"></script> 
-     <script src="scripts/jquery.form.min.js"></script>
+    <script src="scripts/load-image.all.min.js"></script>
+    <script src="scripts/jquery-3.1.1.min.js"></script> 
+    <script src="scripts/jquery.form.min.js"></script>
     <script>
-        //
-    document.getElementsByClassName("img-thumbnail").onchange = function (e) {
-        loadImage(
-            e.target.files[0],
-            function (img) {
-                document.body.appendChild(img);
-            }
-        );
-    };
+       
         $(document).ready(function () {
             var options = {
                 beforeSubmit: showRequest,  // pre-submit callback
@@ -67,15 +60,37 @@
 	 </div>
 </form>	
 
-
+<!--Loads image for each item in the pictures list array. Generates html -->
 <div class="containergallery">
 <div class="row">
 	<%pictures.forEach(function(picture){ %>
-    <div class="col-xs-12 col-lg-4"><img src="<%= picture %>" id="imggallery" class="img-thumbnail"></div>
+    <div class="col-xs-12 col-lg-4"><img src="<%= picture %>" class="img-thumbnail"></div>
 <%}); %>
   	
 </div>
 </div>
+<script type="text/javascript">
+     //gets a list of img-thumbnail elements
+    var list_of_elements = document.getElementsByClassName("img-thumbnail");
+    console.log(list_of_elements);
+    // loop over list and set event handler to change orientation
+
+    for (var i = 0; i < list_of_elements.length; i++) {
+        list_of_elements[i].src.onchange = function (e) {
+            console.log(e);
+            loadImage(
+                e.target.files[0],
+                function (img) {
+                    document.body.appendChild(img);
+                },
+                {orientation: true}
+            );
+        };
+    };
+
+</script>
+
+
 </body>
 </html>
 
