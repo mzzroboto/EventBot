@@ -1,13 +1,14 @@
 <html>
 <head>
 	<title>EventBot!</title>
-	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="eventbot.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="eventbot.css">
 	<link href="https://fonts.googleapis.com/css?family=Amatic+SC:700|Saira+Semi+Condensed" rel="stylesheet">
-    <script src="Scripts/jquery-3.1.1.min.js"></script>
-    <script src="Scripts/jquery.form.min.js"></script>
+     <script src="scripts/jquery-3.1.1.min.js"></script> 
+     <script src="scripts/jquery.form.min.js"></script>
     <script>
-    document.getElementByClassName("img-thumbnail").onchange = function (e) {
+        //
+    document.getElementsByClassName("img-thumbnail").onchange = function (e) {
         loadImage(
             e.target.files[0],
             function (img) {
@@ -79,8 +80,7 @@
 </div>
 
 
- <script src="Scripts/jquery-3.1.1.min.js"></script> 
- <script src="Scripts/jquery.form.min.js"></script>
+
 </body>
 </html>
 
