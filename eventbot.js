@@ -24,10 +24,12 @@ var upload = multer({
 app.get("/", function(req, res) {
     //res.sendFile(__dirname + "/index.html");
     var pictures = [];  
-    fs.recurseSync("public/images/",['**/*.JPG', '**/*.PNG', '**/*.JPEG'], function(filepath, relative, filename){
-    console.log(filename);
-    pictures.push("/images/" + filename);
-}); 
+    fs.recurseSync("public/images/",
+                   ['**/*.JPG', '**/*.PNG', '**/*.JPEG', '**/*.jpg', '**/*.png', '**/*.jpeg'],
+                   function(filepath, relative, filename) {
+                       console.log(filename);
+                       pictures.push("/images/" + filename);
+                   });
     res.render("index.ejs", {pictures: pictures});
 
 });
