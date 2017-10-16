@@ -73,18 +73,30 @@
      //gets a list of img-thumbnail elements
     var list_of_elements = document.getElementsByClassName("img-thumbnail");
     console.log(list_of_elements);
-    // loop over list and set event handler to change orientation
 
+    // loop over list and set event handler to change orientation
+    var imgs = [];
     for (var i = 0; i < list_of_elements.length; i++) {
-        list_of_elements[i].src.onchange = function (e) {
-            console.log(e);
-            loadImage(
-                e.target.files[0],
+        list_of_elements[i].onload = function(e) {
+            //console.log(e);
+            //console.log(e.path[0].src);
+            var newimg = loadImage(
+                e.path[0].src,
                 function (img) {
+                    console.log(img);
+                    $(e.currentTarget).addClass("img-thumbnail");
+                    $(e.currentTarget).replaceWith(img);
                     document.body.appendChild(img);
                 },
-                {orientation: true}
+                {
+                    orientation: true,
+                    canvas: false,
+                    noRevoke: true,
+                }
             );
+            //$(newimg).addClass("img-thumbnail");
+            //$(e.currentTarget).replaceWith(newimg);
+            //console.log(e.currentTarget);
         };
     };
 
