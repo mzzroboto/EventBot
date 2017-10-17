@@ -8,6 +8,7 @@ var multer = require('multer');
 var bodyParser = require('body-parser');
 var app = express();
 var fs = require('file-system');
+const path = require('path');
 
 app.use(bodyParser.json());
 app.use(express.static("public"));
@@ -23,8 +24,9 @@ const mkdirSync = function (dirPath) {
 // If this is a snap the current directory is not writable
 var images_path;
 if (process.env.SNAP_COMMON) {
-  images_path = process.env.SNAP_DATA + "/images";
+  images_path = path.join(process.env.SNAP_COMMON, "images");
   app.use(express.static(process.env.SNAP_COMMON));
+  app.set('views', path.join(__dirname, 'views'));
 } else {
   images_path = "public/images";
 }
