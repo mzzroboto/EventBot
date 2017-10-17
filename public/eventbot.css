@@ -13,7 +13,7 @@ h1 {
 	width: 100%;
 	margin-bottom: 5px;
 	margin-left: 1.66%;
-	
+	float:left;	
 }
 
 h3	{
@@ -31,6 +31,10 @@ img{
 .containergallery {
 	margin: .5%;
 	padding: 1%;
-	
-
 }
+
+.img-thumbnail {
+	margin-bottom: 5px;
+	max-height: 401px;
+}
+
