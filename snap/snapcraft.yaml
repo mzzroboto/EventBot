@@ -18,8 +18,5 @@ apps:
 
 parts:
   webserver:
-# TODO how to replace with upstream path
-#    source: https://github.com/mzzroboto/EventBot.git
-    source: .
-    source-branch: snap-package
+    source: https://github.com/robotnyc/EventBot.git
     plugin: nodejs
