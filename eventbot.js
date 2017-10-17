@@ -1,3 +1,8 @@
+#!/usr/bin/env node
+
+console.log(process.env);
+
+var fs = require('file-system');
 var express = require('express');
 var multer = require('multer');
 var bodyParser = require('body-parser');
@@ -20,6 +25,14 @@ var upload = multer({
     storage: Storage
 }).array("imgUploader", 10); //Field name and max count
 
+const mkdirSync = function (dirPath) {
+  try {
+    fs.mkdirSync(dirPath)
+  } catch (err) {
+    if (err.code !== 'EEXIST') throw err
+  }
+};
+mkdirSync("images");
 
 app.get("/", function(req, res) {
     //res.sendFile(__dirname + "/index.html");
@@ -36,7 +49,8 @@ app.get("/", function(req, res) {
 app.post("/api/upload", function(req, res) {
     upload(req, res, function(err) {
         if (err) {
-            return res.end("Something went wrong!");
+            console.error(err.stack);
+            return res.status(500).send("Something went wrong!");
         }
         else {
         return res.end("File Uploaded Successfully!");
@@ -45,6 +59,6 @@ app.post("/api/upload", function(req, res) {
     });
 });
 
- app.listen(8090, function(a) {
+app.listen(8090, function(a) {
     console.log("Listening to port 8090");
 });

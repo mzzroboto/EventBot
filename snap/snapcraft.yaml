@@ -1,0 +1,22 @@
+name: eventbot
+version: '1.0.0'
+summary: EventBot is a local web app to hosts your pictures.
+description: |
+  EventBot allows everyone to share photos at an event, see photos in
+  real-time and download in bulk without losing ownership or posting to
+  social media.
+
+grade: devel
+confinement: devmode
+
+apps:
+  node-service:
+    command: bin/eventbot
+    daemon: simple
+    restart-condition: always
+    plugs: [network-bind]
+
+parts:
+  webserver:
+    source: https://github.com/robotnyc/EventBot.git
+    plugin: nodejs
