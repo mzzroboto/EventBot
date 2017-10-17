@@ -11,7 +11,7 @@ var fs = require('file-system');
 const path = require('path');
 
 app.use(bodyParser.json());
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, "public")));
 
 const mkdirSync = function (dirPath) {
   try {
