@@ -70,8 +70,8 @@ app.get("/", function(req, res) {
                        pictures.push("/images/" + filename);
                    });
     res.render("index.ejs", {pictures: pictures, orientations: orientations});
-
 });
+
 app.post("/api/upload", function(req, res) {
     upload(req, res, function(err) {
         if (err) {
