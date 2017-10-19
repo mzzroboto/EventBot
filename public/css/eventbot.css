@@ -31,6 +31,18 @@ img{
 	padding: 1%;
 }
 
+.img-thumbnail[data-orientation="8"] {
+	transform:rotate(270deg);
+}
+
+.img-thumbnail[data-orientation="6"] {
+	transform:rotate(90deg);
+}
+
+.img-thumbnail[data-orientation="3"] {
+	transform:rotate(180deg);
+}
+
 .img-thumbnail {
 	margin-bottom: 5px;
 	max-height: 401px;

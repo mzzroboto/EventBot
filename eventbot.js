@@ -9,6 +9,7 @@ var bodyParser = require('body-parser');
 var app = express();
 var fs = require('file-system');
 const path = require('path');
+var ExifImage = require('exif').ExifImage;
 
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, "public")));
@@ -47,16 +48,28 @@ var upload = multer({
     storage: Storage
 }).array("imgUploader", 10); //Field name and max count
 
+var orientations = {};
 app.get("/", function(req, res) {
     //res.sendFile(__dirname + "/index.html");
     var pictures = [];  
     fs.recurseSync(images_path,
                    ['**/*.JPG', '**/*.PNG', '**/*.JPEG', '**/*.jpg', '**/*.png', '**/*.jpeg'],
                    function(filepath, relative, filename) {
-                       console.log(filename);
+                       try {
+                           new ExifImage({ image : filepath }, function (error, exifData) {
+                               console.log(filename);
+                               if (error)
+                                   console.log('Error: '+error.message);
+                               else {
+                                   orientations["/images/" + filename] = exifData.image.Orientation || 1;
+                               }
+                           });
+                       } catch (error) {
+                           console.log('Error: ' + error.message);
+                       }
                        pictures.push("/images/" + filename);
                    });
-    res.render("index.ejs", {pictures: pictures});
+    res.render("index.ejs", {pictures: pictures, orientations: orientations});
 
 });
 app.post("/api/upload", function(req, res) {

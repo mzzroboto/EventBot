@@ -63,9 +63,11 @@
 <!--Loads image for each item in the pictures list array. Generates html -->
 <div class="containergallery">
 <div class="row">
-	<%pictures.forEach(function(picture){ %>
-    <div class="col-xs-12 col-lg-4"><img src="<%= picture %>" class="img-thumbnail"></div>
-<%}); %>
+	<% pictures.forEach(function(picture) { %>
+		<div class="col-xs-12 col-lg-4">
+			<img src="<%= picture %>" class="img-thumbnail" data-orientation="<%= orientations[picture] %>">
+		</div>
+	<% }); %>
   	
 </div>
 </div>
