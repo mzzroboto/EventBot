@@ -10,8 +10,9 @@ var app = express();
 var fs = require('file-system');
 const path = require('path');
 var ExifImage = require('exif').ExifImage;
+var sanitize = require("sanitize-filename");
 
-app.use(bodyParser.json());
+app.use(bodyParser.json()); // to support JSON-encoded bodies
 app.use(express.static(path.join(__dirname, "public")));
 
 const mkdirSync = function (dirPath) {
@@ -40,7 +41,8 @@ var Storage = multer.diskStorage({
         callback(null, images_path);
     },
     filename: function(req, file, callback) {
-        callback(null, file.fieldname + "_" + Date.now() + "_" + file.originalname);
+	var name = sanitize(req.body.name).replace(/ /g,"_");
+        callback(null, name + "_" + Date.now() + "_" + file.originalname);
     }
 });
 
@@ -57,7 +59,6 @@ app.get("/", function(req, res) {
                    function(filepath, relative, filename) {
                        try {
                            new ExifImage({ image : filepath }, function (error, exifData) {
-                               console.log(filename);
                                if (error)
                                    console.log('Error: '+error.message);
                                else {

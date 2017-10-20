@@ -44,9 +44,9 @@
 	 				
 	 				<h3>Upload 10 photos at a time. Click "Browse", select your photos, and click "Upload"!</h3>
 	 				
-    <form id="frmUploader" enctype="multipart/form-data" action="api/upload/" method="post">
-        <label class="sr-only" for="inlineFormInput" id="yourname">Your Name</label>
-	<input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormInput" placeholder="Your Name">
+    <form id="frmUploader" enctype="multipart/form-data" action="/api/upload/" method="post">
+        <label class="sr-only" for="inlineFormInput">Your Name</label>
+	<input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="yourname" name="name" placeholder="Your Name">
 	<label class="btn btn-primary">Browse&hellip;
             <input type="file" style="display: none;" name="imgUploader" multiple />
 	</label>

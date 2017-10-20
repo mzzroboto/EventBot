@@ -11,7 +11,8 @@
     "express": "^4.16.1",
     "file-system": "^2.2.2",
     "multer": "^1.2.0",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "sanitize-filename": "^1.6.1"
   },
   "devDependencies": {},
   "scripts": {
