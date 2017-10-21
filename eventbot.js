@@ -9,8 +9,10 @@ var bodyParser = require('body-parser');
 var app = express();
 var fs = require('file-system');
 const path = require('path');
+var ExifImage = require('exif').ExifImage;
+var sanitize = require("sanitize-filename");
 
-app.use(bodyParser.json());
+app.use(bodyParser.json()); // to support JSON-encoded bodies
 app.use(express.static(path.join(__dirname, "public")));
 
 const mkdirSync = function (dirPath) {
@@ -39,7 +41,8 @@ var Storage = multer.diskStorage({
         callback(null, images_path);
     },
     filename: function(req, file, callback) {
-        callback(null, file.fieldname + "_" + Date.now() + "_" + file.originalname);
+	var name = sanitize(req.body.name).replace(/ /g,"_");
+        callback(null, name + "_" + Date.now() + "_" + file.originalname);
     }
 });
 
@@ -47,18 +50,29 @@ var upload = multer({
     storage: Storage
 }).array("imgUploader", 10); //Field name and max count
 
+var orientations = {};
 app.get("/", function(req, res) {
     //res.sendFile(__dirname + "/index.html");
     var pictures = [];  
     fs.recurseSync(images_path,
                    ['**/*.JPG', '**/*.PNG', '**/*.JPEG', '**/*.jpg', '**/*.png', '**/*.jpeg'],
                    function(filepath, relative, filename) {
-                       console.log(filename);
+                       try {
+                           new ExifImage({ image : filepath }, function (error, exifData) {
+                               if (error)
+                                   console.log('Error: '+error.message);
+                               else {
+                                   orientations["/images/" + filename] = exifData.image.Orientation || 1;
+                               }
+                           });
+                       } catch (error) {
+                           console.log('Error: ' + error.message);
+                       }
                        pictures.push("/images/" + filename);
                    });
-    res.render("index.ejs", {pictures: pictures});
-
+    res.render("index.ejs", {pictures: pictures, orientations: orientations});
 });
+
 app.post("/api/upload", function(req, res) {
     upload(req, res, function(err) {
         if (err) {
@@ -66,8 +80,7 @@ app.post("/api/upload", function(req, res) {
             return res.status(500).send("Something went wrong!");
         }
         else {
-        return res.end("File Uploaded Successfully!");
-        //res.redirect('/');
+            return res.end("File Uploaded Successfully!");
         }
     });
 });
