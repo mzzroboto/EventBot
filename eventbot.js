@@ -73,6 +73,28 @@ app.get("/", function(req, res) {
     res.render("index.ejs", {pictures: pictures, orientations: orientations});
 });
 
+app.get("/view", function(req, res) {
+    //res.sendFile(__dirname + "/index.html");
+    var pictures = [];  
+    fs.recurseSync(images_path,
+                   ['**/*.JPG', '**/*.PNG', '**/*.JPEG', '**/*.jpg', '**/*.png', '**/*.jpeg'],
+                   function(filepath, relative, filename) {
+                       try {
+                           new ExifImage({ image : filepath }, function (error, exifData) {
+                               if (error)
+                                   console.log('Error: '+error.message);
+                               else {
+                                   orientations["/images/" + filename] = exifData.image.Orientation || 1;
+                               }
+                           });
+                       } catch (error) {
+                           console.log('Error: ' + error.message);
+                       }
+                       pictures.push("/images/" + filename);
+                   });
+    res.render("indexview.ejs", {pictures: pictures, orientations: orientations});
+});
+
 app.post("/api/upload", function(req, res) {
     upload(req, res, function(err) {
         if (err) {
