@@ -70,7 +70,7 @@ app.get("/", function(req, res) {
                        }
                        pictures.push("/images/" + filename);
                    });
-    res.render("index.ejs", {pictures: pictures, orientations: orientations});
+    res.render("index.ejs", {pictures: pictures.slice(0,15), orientations: orientations});
 });
 
 app.get("/view", function(req, res) {
