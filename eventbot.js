@@ -42,7 +42,7 @@ var Storage = multer.diskStorage({
     },
     filename: function(req, file, callback) {
 	var name = sanitize(req.body.name).replace(/ /g,"_");
-        callback(null, name + "_" + Date.now() + "_" + file.originalname);
+        callback(null, Date.now() + "_" + name + "_" + file.originalname);
     }
 });
 
