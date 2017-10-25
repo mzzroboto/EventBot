@@ -1,3 +1,6 @@
+# EventBot 
+Own Your Event
+
 # Build
 
 [![Snap Status](https://build.snapcraft.io/badge/robotnyc/EventBot.svg)](https://build.snapcraft.io/user/robotnyc/EventBot)
