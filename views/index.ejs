@@ -5,6 +5,7 @@
     <link rel="stylesheet" type="text/css" href="css/eventbot.css">
     <script src="scripts/jquery-3.1.1.min.js"></script> 
     <script src="scripts/jquery.form.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script>
        
         $(document).ready(function () {
@@ -63,8 +64,8 @@
 <div class="containergallery">
 <div class="row">
 	<% pictures.forEach(function(picture) { %>
-		<div class="col-xs-12 col-lg-4">
-			<img src="<%= picture %>" class="img-thumbnail" data-orientation="<%= orientations[picture] %>">
+		<div class="col-sm-12 col-lg-4">
+			<img src="<%= picture %>" class="img-responsive" class="thumbnail" data-orientation="<%= orientations[picture] %>">
 		</div>
 	<% }); %>
   	

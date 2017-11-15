@@ -21,14 +21,16 @@ h3	{
 
 }
 
-img{
+img {
 	float:left;
+	width: 400px;
 
 }
 
 .containergallery {
-	margin: .5%;
-	padding: 1%;
+	margin: 10px;
+	padding: 10px;
+	display: block;
 }
 
 .img-thumbnail[data-orientation="8"] {
