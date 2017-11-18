@@ -1,5 +1,6 @@
 body {
 	background-color: #000000;
+	/* TODO convention is to add a default font-family in the body tag */
 }
 
 h1 {
