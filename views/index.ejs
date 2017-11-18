@@ -1,7 +1,7 @@
+<!doctype html>
 <html>
 <head>
 	<title>EventBot!</title>
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/eventbot.css">
     <script src="scripts/jquery-3.1.1.min.js"></script> 
     <script src="scripts/jquery.form.min.js"></script>
@@ -37,7 +37,7 @@
 </head>
 <body>
 <h1>Caro and Chris' Wedding Photos</h1>
-<form class="form-inline" id="frmUploader" enctype="multipart/form-data" action="api/upload/" method="post">
+<!-- <form class="form-inline" id="frmUploader" enctype="multipart/form-data" action="api/upload/" method="post"> -->
   	<div class="container-fluid">
 	 	<div class="row-fluid">
 	 		<div class="col-lg-12">
@@ -58,14 +58,14 @@
 	 		</div>
 	 	</div>
 	 </div>
-</form>	
+<!-- </form>	 -->
 
 <!--Loads image for each item in the pictures list array. Generates html -->
 <div class="containergallery">
 <div class="row">
 	<% pictures.forEach(function(picture) { %>
 		<div class="col-sm-12 col-lg-4">
-			<img src="<%= picture %>" class="img-responsive" class="thumbnail" data-orientation="<%= orientations[picture] %>">
+			<img src="<%= picture %>" class="img-thumbnail thumbnail" data-orientation="<%= orientations[picture] %>">
 		</div>
 	<% }); %>
   	
