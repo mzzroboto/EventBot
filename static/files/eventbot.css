@@ -3,6 +3,7 @@ body {
 	/* TODO convention is to add a default font-family in the body tag */
 }
 
+/* TODO change heading tags to class styles */
 h1 {
 	font-family: 'Amatic SC', cursive;
 	color: white;
