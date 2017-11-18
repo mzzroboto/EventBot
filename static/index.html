@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!-- saved from url=(0022)http://localhost:8090/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>EventBot!</title>
+	<link rel="stylesheet" type="text/css" href="./files/eventbot.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<h1>Caro and Chris' Wedding Photos</h1>
+	<!-- <form class="form-inline" id="frmUploader" enctype="multipart/form-data" action="api/upload/" method="post"> -->
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<div class="col-lg-12">
+				<div class="content">
+
+					<h3>Upload 10 photos at a time. Click "Browse", select your photos, and click "Upload"!</h3>
+
+					<form id="frmUploader" enctype="multipart/form-data" action="http://localhost:8090/api/upload/" method="post">
+						<label class="sr-only" for="inlineFormInput">Your Name</label>
+						<input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="yourname" name="name" placeholder="Your Name" required="">
+						<label class="btn btn-primary">Browse…
+							<input type="file" style="display: none;" name="imgUploader" multiple="">
+						</label>
+						<button type="submit" class="btn btn-primary" name="submit" id="btnSubmit" value="Upload">Upload</button>
+					</form>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- </form>	 -->
+
+	<!--Loads image for each item in the pictures list array. Generates html -->
+	<div class="containergallery">
+		<div class="row">
+			
+			<div class="col-sm-12 col-lg-4">
+				<img src="./files/1.jpg" class="img-thumbnail thumbnail" data-orientation="6">
+			</div>
+			
+			<div class="col-sm-12 col-lg-4">
+				<img src="./files/2.jpg" class="img-thumbnail thumbnail" data-orientation="1">
+			</div>
+			
+			<div class="col-sm-12 col-lg-4">
+				<img src="./files/3.jpg" class="img-thumbnail thumbnail" data-orientation="5">
+			</div>
+			
+			<div class="col-sm-12 col-lg-4">
+				<img src="./files/4.jpg" class="img-thumbnail thumbnail" data-orientation="1">
+			</div>
+			
+			<div class="col-sm-12 col-lg-4">
+				<img src="./files/5.jpg" class="img-thumbnail thumbnail" data-orientation="5">
+			</div>
+			
+			<div class="col-sm-12 col-lg-4">
+				<img src="./files/6.jpg" class="img-thumbnail thumbnail" data-orientation="1">
+			</div>
+			
+			<div class="col-sm-12 col-lg-4">
+				<img src="./files/7.jpg" class="img-thumbnail thumbnail" data-orientation="3">
+			</div>
+			
+			<div class="col-sm-12 col-lg-4">
+				<img src="./files/8.jpg" class="img-thumbnail thumbnail" data-orientation="1">
+			</div>
+			
+			<div class="col-sm-12 col-lg-4">
+				<img src="./files/9.jpg" class="img-thumbnail thumbnail" data-orientation="3">
+			</div>
+			
+
+		</div>
+	</div>
+
+
+</body></html>
