@@ -51,13 +51,15 @@ var upload = multer({
 }).array("imgUploader", 10); //Field name and max count
 
 var orientations = {};
+
 app.get("/", function(req, res) {
     //res.sendFile(__dirname + "/index.html");
-    var pictures = [];  
+    var pictures = [];
+    var buttons = {};
     fs.recurseSync(images_path,
                    ['**/*.JPG', '**/*.PNG', '**/*.JPEG', '**/*.jpg', '**/*.png', '**/*.jpeg'],
                    function(filepath, relative, filename) {
-                       try {
+                        try {
                            new ExifImage({ image : filepath }, function (error, exifData) {
                                if (error)
                                    console.log('Error: '+error.message);
@@ -65,17 +67,33 @@ app.get("/", function(req, res) {
                                    orientations["/images/" + filename] = exifData.image.Orientation || 1;
                                }
                            });
-                       } catch (error) {
+                        } catch (error) {
                            console.log('Error: ' + error.message);
-                       }
-                       pictures.push("/images/" + filename);
-                   });
-    res.render("index.ejs", {pictures: pictures, orientations: orientations});
+                        }
+                        pictures.push("/images/" + filename);
+    });
+
+    for (i = 0; i < pictures.length; i += 10) {
+        buttons[i] = {
+            label: i,
+            url: '/?page=' + i
+        };
+    }
+
+    if (req.query.page > 0)
+        pictures.splice(0, req.query.page);
+
+    res.render("index.ejs", {
+        pictures: pictures,
+        orientations: orientations,
+        buttons: buttons,
+        page: req.query.page
+    });
 });
 
 app.get("/view", function(req, res) {
     //res.sendFile(__dirname + "/index.html");
-    var pictures = [];  
+    var pictures = [];
     fs.recurseSync(images_path,
                    ['**/*.JPG', '**/*.PNG', '**/*.JPEG', '**/*.jpg', '**/*.png', '**/*.jpeg'],
                    function(filepath, relative, filename) {

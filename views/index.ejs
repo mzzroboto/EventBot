@@ -67,12 +67,31 @@
 		<div class="col-sm-12 col-lg-4">
 			<img src="<%= picture %>" class="img-thumbnail thumbnail" data-orientation="<%= orientations[picture] %>">
 		</div>
-	<% }); %>
-  	
+    <% }); %>
 </div>
 </div>
+
+<section id="buttons">
+</section>
+
 <script type="text/javascript">
-    var yourname = getElementById("yourname").value;
+    var yourname = document.getElementById("yourname").value;
+
+    var section = document.getElementById('buttons');
+    const buttons = <%- JSON.stringify(buttons) %>;
+    for (var id in buttons) {
+        var url = "buttons[id]"['url'];
+        var button = document.createElement('button');
+        var label = document.createTextNode(buttons[id]['label']);
+        var i = id;
+        button.onclick = function() { location.href = "/?page=" + this.innerText; };
+        button.appendChild(label);
+        section.appendChild(button);
+        console.log(id);
+        if (id == "<%= page %>") {
+            button.classList.add("focused");
+        }
+    }
 </script>
 
 
