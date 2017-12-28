@@ -2,15 +2,22 @@ body {
 	background-color: #000000;
 }
 
+a:link {
+	color: #71EEB8;
+}
+
+a:visited {
+	color: #d3ecdd;
+}
+
 h1 {
-	font-family: 'Amatic SC', cursive;
+	font-family: 'Lobster', cursive;
 	color: white;
-	font-size:40px;
+	font-size:50px;
 	font-weight: 800;
-	text-transform: uppercase;
 	width: 100%;
 	margin-bottom: 5px;
-	margin-left: 1.66%;
+	/*margin-left: 1.66%;*/
 	float:left;	
 }
 
@@ -19,6 +26,16 @@ h3	{
 	font-family: 'Saira Semi Condensed', sans-serif;
 	color: white;
 
+}
+
+.aboutP {
+	font-size: 1.5em;
+	font-family: 'Saira Semi Condensed', sans-serif;
+	color: white;
+	display: block;
+	width: 80%;
+	padding: 0px 0px 0px 30px;
+	margin: 0;
 }
 
 img {
